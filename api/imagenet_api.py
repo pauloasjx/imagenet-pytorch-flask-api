@@ -7,6 +7,10 @@ from imagenet_util import image_loader, model, classes
 app = Flask(__name__)
 cors = CORS(app)
 
+@app.route("/", methods=['GET'])
+def index():
+	return app.send_static_file('../web/build/index.html')
+
 @app.route("/classify", methods=['POST'])
 @cross_origin(origin='*')
 def classify():
@@ -17,9 +21,7 @@ def classify():
 
 	prediction_class = classes[str(int(prediction.max(1)[1]))]
 
-
 	return jsonify(
-		success=True,
 		prediction=prediction_class[1]
 	)
 
