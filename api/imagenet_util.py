@@ -19,4 +19,4 @@ def image_loader(image):
 	return image_processed.float()
 
 model = models.vgg16(pretrained=True)
-classes = dict(json.loads(open ('imagenet_classes.json').read()))
+classes = dict(json.loads(open ('../imagenet_classes.json').read()))
