@@ -9,7 +9,7 @@ cors = CORS(app)
 
 @app.route("/", methods=['GET'])
 def index():
-	return app.send_static_file('../web/build/index.html')
+	return send_from_directory('.', 'index.html')
 
 @app.route("/classify", methods=['POST'])
 @cross_origin(origin='*')
