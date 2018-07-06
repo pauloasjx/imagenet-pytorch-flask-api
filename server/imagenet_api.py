@@ -1,5 +1,5 @@
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 
 from imagenet_util import image_loader, model, classes
@@ -11,7 +11,7 @@ cors = CORS(app)
 def index():
 	return send_from_directory('.', 'index.html')
 
-@app.route("/classify", methods=['POST'])
+@app.route("/api/v1/classify", methods=['POST'])
 @cross_origin(origin='*')
 def classify():
 	image = request.files['image'].read()
